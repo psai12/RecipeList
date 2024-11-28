@@ -1,10 +1,14 @@
 const express=require('express');
 const dotenv=require('dotenv').config({path:'.env'});
 const app=express();
+const ejs=require('ejs');
+const path=require('path');
 
-
+app.set('views engine',ejs);
 
 app.use(express.urlencoded({extended:true}));
+
+app.use('/static',express.static(path.join(__dirname,'static')));
 app.use(express.json());
 
 

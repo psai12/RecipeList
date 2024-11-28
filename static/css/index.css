@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.fullpage
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.fullpage .sidebar
+{
+    width: 20%;
+    height: 100%;
+}
+.fullpage .main
+{
+    width: 80%;
+    height: 100%;
+}
