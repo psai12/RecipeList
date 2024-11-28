@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 .fullpage
 {
@@ -9,14 +10,36 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 .fullpage .sidebar
 {
     width: 20%;
+    background-color:red;
     height: 100%;
+    color: white;
+    text-align: center;
+}
+.fullpage .sidebar hr
+{
+    color: white;
+    margin-bottom: 20px;
+    width: 100%;
+    margin-top: 10px;
 }
 .fullpage .main
 {
     width: 80%;
     height: 100%;
+}
+.fullpage .search
+{
+    border-radius: 5px;
+    width: 95%;
+    background-color: rgba(214, 214, 214, 0.481);
+    height: 30px;
+    border: none;
+    text-indent: 10px;
+    margin-left: 20px;
+    margin-top: 5px;
 }
