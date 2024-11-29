@@ -13,5 +13,7 @@ app.use(express.json());
 
 
 app.get('/',(req,res)=>res.render('index.ejs'));
+app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
+app.get('/deleterecipe',(req,res)=>res.render('deleterecipe.ejs'));
 
 app.listen('2001',()=>console.log('server started!'));

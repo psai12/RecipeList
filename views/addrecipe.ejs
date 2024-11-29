@@ -1,0 +1,39 @@
+<%-include('include/header.ejs')%>
+
+<main class="main">
+  <h1>Add Recipe of your choice</h1>
+  <form class="addrecipe">
+     <section>
+        <label>Recipe Name</label>
+        <input type="text" name="recipe">
+     </section>
+     <section>
+         <select>
+            <option>Breakfast</option>
+            <option>Snack</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+         </select>
+     </section>
+     <section>
+      <select>
+         <option>Continental</option>
+         <option>Vegetarian</option>
+         <option>Non-Veg</option>
+         <option>Thai</option>
+      </select>
+     </section>
+     <section>
+      <label>Ingrediant</label>
+      <input type="text" name="recipe">
+   </section>
+   <section>
+      <label>Upload Recipe Image</label>
+      <input type="file" name="recipe" accept="img**">
+   </section>
+  </form>
+</main> 
+</div>
+
+</body>
+</html>
