@@ -1,13 +1,14 @@
 <%-include('include/header.ejs')%>
 
 <main class="main">
-  <h1>Add Recipe of your choice</h1>
+  <h1 style="width: 100%;text-align: center;color: red;">Add Recipe of your choice</h1>
   <form class="addrecipe">
      <section>
         <label>Recipe Name</label>
         <input type="text" name="recipe">
      </section>
      <section>
+      <label>Recipe Type</label>
          <select>
             <option>Breakfast</option>
             <option>Snack</option>
@@ -16,6 +17,7 @@
          </select>
      </section>
      <section>
+      <label>Recipe Origin</label>
       <select>
          <option>Continental</option>
          <option>Vegetarian</option>
@@ -31,6 +33,7 @@
       <label>Upload Recipe Image</label>
       <input type="file" name="recipe" accept="img**">
    </section>
+   <button type="submit" class="submitrecipe">List Recipe</button>
   </form>
 </main> 
 </div>

@@ -27,6 +27,11 @@
     width: 100%;
     margin-top: 10px;
 }
+.fullpage .sidebar a
+{
+    color: white;
+    text-decoration: none;
+}
 .fullpage .main
 {
     width: 80%;
@@ -42,4 +47,31 @@
     text-indent: 10px;
     margin-left: 20px;
     margin-top: 5px;
+}
+.addrecipe
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.addrecipe section
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:450px;
+    margin-top: 30px;
+}
+.submitrecipe
+{
+    width: 250px;
+    background-color: red;
+    color: white;
+    margin-top: 30px;
+    padding: 15px;
+    font-weight: 600;
 }
