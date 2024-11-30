@@ -2,14 +2,14 @@
 
 <main class="main">
   <h1 style="width: 100%;text-align: center;color: red;">Add Recipe of your choice</h1>
-  <form class="addrecipe">
+  <form id="addrecipe">
      <section>
         <label>Recipe Name</label>
         <input type="text" name="recipe">
      </section>
      <section>
       <label>Recipe Type</label>
-         <select>
+         <select name="recipetype">
             <option>Breakfast</option>
             <option>Snack</option>
             <option>Lunch</option>
@@ -18,7 +18,7 @@
      </section>
      <section>
       <label>Recipe Origin</label>
-      <select>
+      <select name="origin">
          <option>Continental</option>
          <option>Vegetarian</option>
          <option>Non-Veg</option>
@@ -27,16 +27,14 @@
      </section>
      <section>
       <label>Ingrediant</label>
-      <input type="text" name="recipe">
+      <input type="text" name="ingredient">
    </section>
    <section>
       <label>Upload Recipe Image</label>
-      <input type="file" name="recipe" accept="img**">
+      <input type="file" name="recipeimg" accept="img**">
    </section>
    <button type="submit" class="submitrecipe">List Recipe</button>
   </form>
 </main> 
-</div>
 
-</body>
-</html>
+<%- include('include/footer.ejs') %>

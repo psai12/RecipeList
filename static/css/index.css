@@ -48,7 +48,7 @@
     margin-left: 20px;
     margin-top: 5px;
 }
-.addrecipe
+#addrecipe
 {
     display: flex;
     justify-content: center;
@@ -58,7 +58,7 @@
     flex-direction: column;
     margin-top: 30px;
 }
-.addrecipe section
+#addrecipe section
 {
     display: flex;
     justify-content: space-between;
