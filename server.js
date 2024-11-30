@@ -33,10 +33,21 @@ app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
 app.get('/deleterecipe',(req,res)=>res.render('deleterecipe.ejs'));
 
 
-app.post('/createrecipe',upload.single('recipeimg'),(req,res)=>{
+app.post('/createrecipe',upload.single('recipeimg'),async(req,res)=>{
    const file=req.file;
-   const body=req.body;
-   console.log(file.path);
+   const body=JSON.parse(JSON.stringify(req.body))
+   const recipe=await recipeModel.create({
+    "recipename":body.recipe,
+    "recipetype":body.recipetype,
+    "recipeorigin":body.origin,
+    "recipeingredient":body.ingredient,
+    "recipedestination":file.path,
+   })
+   if(recipe)
+   {
+    return res.json({"msg":"recipe saved!"})
+   }
+   return res.json({"msg":"issue in saving recipe!"})
 });
 
 app.listen('2001',()=>console.log('server started!'));
