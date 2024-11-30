@@ -32,7 +32,20 @@ app.use('/static',express.static(path.join(__dirname,'static')));
 app.use(express.json());
 
 
-app.get('/',(req,res)=>res.render('index.ejs'));
+app.get('/',async (req,res)=>
+{
+    const recipes=await recipeModel.find({});
+    
+    console.log(recipes);
+
+    if(!recipes)
+    {
+        return res.json({"message":"recipes not added!"})
+    }
+    res.render('index.ejs',{recipes})
+   
+}
+);
 app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
 app.get('/deleterecipe',(req,res)=>res.render('deleterecipe.ejs'));
 
@@ -45,7 +58,7 @@ app.post('/createrecipe',upload.single('recipeimg'),async(req,res)=>{
     "recipetype":body.recipetype,
     "recipeorigin":body.origin,
     "recipeingredient":body.ingredient,
-    "recipedestination":file.path,
+    "recipedestination":`/static/uploads/${file.filename}`,
    })
    if(recipe)
    {

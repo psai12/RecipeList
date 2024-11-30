@@ -20,15 +20,20 @@ if(form)
           console.log("Response not ok!");  
     }
 }
-const allrecipes=document.querySelector('.allrecipes');
-if(allrecipes)
+
+RecipesFetch();
+async function RecipesFetch()
 {
-    const fetchRecipes=await fetch('http://localhost:2001/fetchrecipes',{method:'GET'});
-    if(fetchRecipes.ok)
+    const allrecipes=document.querySelector('.allrecipes');
+    if(allrecipes)
     {
-        const data =await fetchRecipes.json();
-        console.log(data)
-        return data;
+        const fetchRecipes=await fetch('http://localhost:2001/fetchrecipes',{method:'GET'});
+        if(fetchRecipes.ok)
+        {
+            const data =await fetchRecipes.json();
+            console.log(data)
+            return data;
+        }
+        console.log("response issues");
     }
-    console.log("response issues");
 }

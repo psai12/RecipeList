@@ -3,12 +3,18 @@
 <main class="main">
    <input type="text" name="search" class="search" placeholder="search">
 
+  
    <div class="allrecipes">
+      <% for(let i of recipes) {%>
       <div class="recipe">
-         <img src="/static/uploads/1732950729732-937332805.jpg" width="150" height="150">
-         <label>Recipe Name</label>
+         <img src="<%=i.recipedestination%>" width="150" height="150">
+         <label><%=i.recipename%></label>
+         <label><%=i.recipetype%></label>
+         <label><%=i.recipeorigin%></label>
       </div>
+      <% }%>
    </div>
+ 
 </main> 
 
 <%-include('include/footer.ejs')%>
