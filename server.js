@@ -4,8 +4,21 @@ const app=express();
 const ejs=require('ejs');
 const path=require('path');
 const multer=require('multer');
+const recipeModel=require('./model/recipemode.js');
 
-const upload=multer({storage:'/uploads'});
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname,'static/uploads')); 
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1E9)}${ext}`;
+        cb(null, uniqueName);
+    }
+});
+
+const upload=multer({storage:storage});
 
 app.set('views engine',ejs);
 
@@ -20,10 +33,10 @@ app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
 app.get('/deleterecipe',(req,res)=>res.render('deleterecipe.ejs'));
 
 
-app.post('/createrecipe',upload.single('file'),(req,res)=>{
+app.post('/createrecipe',upload.single('recipeimg'),(req,res)=>{
    const file=req.file;
-
-   console.log(file);
+   const body=req.body;
+   console.log(file.path);
 });
 
 app.listen('2001',()=>console.log('server started!'));

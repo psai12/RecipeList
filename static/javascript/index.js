@@ -8,8 +8,8 @@ if(form)
         const fields=new FormData(e.target);
         const data=Object.fromEntries(fields.entries());
         
-        const response=await fetch('http://localhost:2001/createrecipe',{headers:{"Content-Type":"application/json"},method:'POST',
-            body:data})
+        const response=await fetch('http://localhost:2001/createrecipe',{method:'POST',
+            body:fields})
 
         if(response.ok)
             {
