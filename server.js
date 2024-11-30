@@ -5,7 +5,11 @@ const ejs=require('ejs');
 const path=require('path');
 const multer=require('multer');
 const recipeModel=require('./model/recipemode.js');
+const mongoose=require('mongoose');
 
+mongoose.connect('mongodb://127.0.0.1:27017/',{dbName:'recipebook'}).then(e=>console.log('database connected')).catch(e=>{
+    console.log('issue in connecting database!');
+})
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

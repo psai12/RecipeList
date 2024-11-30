@@ -75,3 +75,25 @@
     padding: 15px;
     font-weight: 600;
 }
+.allrecipes
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.allrecipes img
+{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.allrecipes .recipe
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+}
