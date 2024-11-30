@@ -10,5 +10,13 @@ if(form)
         
         const response=await fetch('http://localhost:2001/createrecipe',{headers:{"Content-Type":"application/json"},method:'POST',
             body:data})
+
+        if(response.ok)
+            {
+               const data= await response.json();
+                console.log(data);
+                return data;
+            }    
+          console.log("Response not ok!");  
     }
 }
