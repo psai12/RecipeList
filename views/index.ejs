@@ -7,6 +7,7 @@
    <div class="allrecipes">
       <% for(let i of recipes) {%>
       <div class="recipe">
+         <a href="/editrecipe"><img src="static/assets/edit.png" width="20" height="20" class="deleteicon"></a>
          <img src="<%=i.recipedestination%>" width="200" height="200">
          <label><b><%=i.recipename%></b></label>
          <label><%=i.recipetype%></label>

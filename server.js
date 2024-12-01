@@ -32,6 +32,13 @@ app.use('/static',express.static(path.join(__dirname,'static')));
 app.use(express.json());
 
 
+
+app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
+
+app.get('/editrecipe',(req,res)=>res.render('editrecipe.ejs'));
+
+
+
 app.get('/',async (req,res)=>
 {
     const recipes=await recipeModel.find({});
@@ -44,10 +51,8 @@ app.get('/',async (req,res)=>
     }
     res.render('index.ejs',{recipes})
    
-}
-);
+});
 
-app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
 
 app.get('/deleterecipe',async(req,res)=>{
     const recipes=await recipeModel.find({});

@@ -1,0 +1,40 @@
+<%-include('include/header.ejs')%>
+
+<main class="main">
+  <h1 style="width: 100%;text-align: center;color: red;">Edit recipe of your choice</h1>
+  <form id="addrecipe">
+     <section>
+        <label>Recipe Name</label>
+        <input type="text" name="recipe">
+     </section>
+     <section>
+      <label>Recipe Type</label>
+         <select name="recipetype">
+            <option>Breakfast</option>
+            <option>Snack</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+         </select>
+     </section>
+     <section>
+      <label>Recipe Origin</label>
+      <select name="origin">
+         <option>Continental</option>
+         <option>Vegetarian</option>
+         <option>Non-Veg</option>
+         <option>Thai</option>
+      </select>
+     </section>
+     <section>
+      <label>Ingrediant</label>
+      <input type="text" name="ingredient">
+   </section>
+   <section>
+      <label>Upload Recipe Image</label>
+      <input type="file" name="recipeimg" accept=".png,.jpg,.jpeg">
+   </section>
+   <button type="submit" class="submitrecipe">Update Recipe</button>
+  </form>
+</main> 
+
+<%- include('include/footer.ejs') %>
