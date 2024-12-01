@@ -48,9 +48,26 @@ app.get('/',async (req,res)=>
 );
 
 app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
+
 app.get('/deleterecipe',async(req,res)=>{
     const recipes=await recipeModel.find({});
     res.render('deleterecipe.ejs',{recipes});
+});
+
+app.delete('/:id/delete',async(req,res)=>{
+    const id=req.params.id;
+    const recipe=await recipeModel.findById(id);
+
+    if(!recipe)
+    {
+        return res.json({"success":false,"message":"no item found!"})
+    }
+    const recipeDeleted=await recipeModel.deleteOne({_id:id});
+    if(recipeDeleted)
+    {
+        return res.json({"success":true,"message":"recipe deleted"})
+    }
+    return res.json({"success":false,"message":"network issue"})
 });
 
 

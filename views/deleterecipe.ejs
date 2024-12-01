@@ -5,8 +5,9 @@
 <div class="allrecipes">
     <% for(let i of recipes) {%>
     <div class="recipe">
-        <img src="static/assets/delete.png" width="20" height="20" class="deleteicon"> 
+        <img src="static/assets/delete.png" width="20" height="20" class="deleteicon">
        <img src="<%=i.recipedestination%>" width="200" height="200">
+       <input data-id="<%=i.id%>" hidden id="recipeid"/>
        <label><b><%=i.recipename%></b></label>
        <label><%=i.recipetype%></label>
        <label><%=i.recipeorigin%></label>

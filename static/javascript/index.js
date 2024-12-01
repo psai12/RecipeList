@@ -37,3 +37,28 @@ async function RecipesFetch()
         console.log("response issues");
     }
 }
+
+DeleteRecipe();
+async function DeleteRecipe()
+{
+    const deleteBtn=document.querySelector('.deleteicon');
+    
+    if(deleteBtn)
+    {
+        deleteBtn.onclick=async (e)=>{
+            const id=document.getElementById("recipeid");
+            const recipeid=id.getAttribute('data-id');
+            const fetchRecipes=await fetch(`http://localhost:2001/${recipeid}/delete`,{method:'DELETE'});
+            if(fetchRecipes.ok)
+            {
+                const data =await fetchRecipes.json();
+                if(data.success)
+                {
+                   window.location.reload();
+                }
+                return data;
+            }
+            console.log("response issues");
+        }
+    }
+} 
