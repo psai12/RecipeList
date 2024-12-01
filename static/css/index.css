@@ -82,6 +82,7 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+  
 }
 .allrecipes img
 {
@@ -100,4 +101,12 @@
     padding: 20px;
     margin-top: 20px;
     margin-left: 20px;
+    position: relative;
+   
+}
+.deleteicon
+{
+    position: absolute;
+    top: -30px;
+    right: 5px;
 }
