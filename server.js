@@ -46,8 +46,12 @@ app.get('/',async (req,res)=>
    
 }
 );
+
 app.get('/addrecipe',(req,res)=>res.render('addrecipe.ejs'));
-app.get('/deleterecipe',(req,res)=>res.render('deleterecipe.ejs'));
+app.get('/deleterecipe',async(req,res)=>{
+    const recipes=await recipeModel.find({});
+    res.render('deleterecipe.ejs',{recipes});
+});
 
 
 app.post('/createrecipe',upload.single('recipeimg'),async(req,res)=>{

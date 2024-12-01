@@ -1,3 +1,16 @@
 <%-include('include/header.ejs')%>
-
+<main class="main">
+    <input type="text" name="search" class="search" placeholder="search">
+ 
+<div class="allrecipes">
+    <% for(let i of recipes) {%>
+    <div class="recipe">
+       <img src="<%=i.recipedestination%>" width="200" height="200">
+       <label><b><%=i.recipename%></b></label>
+       <label><%=i.recipetype%></label>
+       <label><%=i.recipeorigin%></label>
+    </div>
+    <% }%>
+ </div>
+ </main>
 <%-include('include/footer.ejs')%>
