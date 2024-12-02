@@ -43,7 +43,7 @@ app.get('/',async (req,res)=>
 {
     const recipes=await recipeModel.find({});
     
-    console.log(recipes);
+    // console.log(recipes);
 
     if(!recipes)
     {
@@ -58,6 +58,33 @@ app.get('/deleterecipe',async(req,res)=>{
     const recipes=await recipeModel.find({});
     res.render('deleterecipe.ejs',{recipes});
 });
+
+app.put('/update',upload.single('recipeimg'),async(req,res)=>{
+    const body=JSON.parse(JSON.stringify(req.body))
+    const file=req.file;
+  
+    const recipe=await recipeModel.findOne({"_id":body.recipeid});
+ 
+    console.log(recipe,body)
+    if(!recipe)
+    {
+        return res.json({"success":"false","message":"recipe not found"});
+    }
+
+
+    console.log(recipe);
+    recipe.recipename=body.recipe,
+    recipe.recipetype=body.recipetype,
+    recipe.recipeorigin=body.origin,
+    recipe.recipeingredient=body.ingredient,
+    recipe.recipedestination=`/static/uploads/${file.filename}`,
+
+    console.log(recipe);
+    await recipe.save();
+    return res.json({"success":"true","message":"recipe updated successfully"});
+    // res.render('deleterecipe.ejs',{recipes});
+});
+
 
 app.delete('/:id/delete',async(req,res)=>{
     const id=req.params.id;

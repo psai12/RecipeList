@@ -9,6 +9,7 @@
       <div class="recipe">
          <a href="/editrecipe"><img src="static/assets/edit.png" width="20" height="20" class="deleteicon"></a>
          <img src="<%=i.recipedestination%>" width="200" height="200">
+         <input data-id="<%=i.id%>" hidden id="recipeid"/>
          <label><b><%=i.recipename%></b></label>
          <label><%=i.recipetype%></label>
          <label><%=i.recipeorigin%></label>

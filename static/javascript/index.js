@@ -66,14 +66,26 @@ async function DeleteRecipe()
 EditRecipe();
 async function EditRecipe()
 {
-    const deleteBtn=document.getElementById('.editrecipe');
+    const editRecipe=document.getElementById('editrecipe');
     
-    if(deleteBtn)
-    {
-        deleteBtn.onclick=async (e)=>{
-            const id=document.getElementById("recipeid");
-            const recipeid=id.getAttribute('data-id');
-            const fetchRecipes=await fetch(`http://localhost:2001/${recipeid}/delete`,{method:'DELETE'});
+    const id=document.getElementById("recipeid");
+    if(id)
+        localStorage.setItem("recipeid",id.getAttribute('data-id'));
+
+
+   
+    if(editRecipe)
+    { 
+   
+        editRecipe.onsubmit=async (e)=>{
+            e.preventDefault();
+
+            const fields=new FormData(e.target);
+            fields.append("recipeid",localStorage.getItem("recipeid"));
+            const data=Object.fromEntries(fields.entries());
+            
+            console.log(data);
+            const fetchRecipes=await fetch(`http://localhost:2001/update`,{method:'PUT',body:fields});
             if(fetchRecipes.ok)
             {
                 const data =await fetchRecipes.json();
