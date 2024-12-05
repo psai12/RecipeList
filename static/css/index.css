@@ -36,6 +36,7 @@
 {
     width: 80%;
     height: 100%;
+    overflow-y: auto;
 }
 .fullpage .search
 {

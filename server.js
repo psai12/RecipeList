@@ -104,6 +104,10 @@ app.delete('/:id/delete',async(req,res)=>{
 app.post('/createrecipe',upload.single('recipeimg'),async(req,res)=>{
    const file=req.file;
    const body=JSON.parse(JSON.stringify(req.body))
+   if(!file)
+   {
+    return res.status(400).json({"message":"file not found!"});
+   }
    const recipe=await recipeModel.create({
     "recipename":body.recipe,
     "recipetype":body.recipetype,
@@ -113,9 +117,9 @@ app.post('/createrecipe',upload.single('recipeimg'),async(req,res)=>{
    })
    if(recipe)
    {
-    return res.json({"msg":"recipe saved!"})
+    return res.json({"message":"recipe saved!"})
    }
-   return res.json({"msg":"issue in saving recipe!"})
+   return res.json({"message":"issue in saving recipe!"})
 });
 
 app.get('/deleterecipe/:id',async(req,res)=>{

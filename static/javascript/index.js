@@ -8,14 +8,15 @@ if(form)
         Validation()
         const fields=new FormData(e.target);
         const data=Object.fromEntries(fields.entries());
-        
+        const message=document.querySelector('.message');
+
         const response=await fetch('http://localhost:2001/createrecipe',{method:'POST',
             body:fields})
 
         if(response.ok)
             {
                const data= await response.json();
-                console.log(data);
+                message.innerText=data.message;
                 return data;
             }    
           console.log("Response not ok!");  
