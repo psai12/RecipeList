@@ -45,34 +45,12 @@ app.get('/',async (req,res)=>
 {
     const recipes=await recipeModel.find({});
     
-    // console.log(recipes);
-
     if(!recipes)
     {
         return res.json({"message":"recipes not added!"})
     }
     res.render('index.ejs',{recipes})
    
-});
-
-app.get('/:id',async(req,res)=>{
-    const id=req.params.id;
-
-    const recipesName=await recipeModel.find({'recipename':id}).sort({recipename:1});
-    const recipesType=await recipeModel.find({'recipetype':id}).sort({recipename:1});
-    const recipesOrigin=await recipeModel.find({'recipeorigin':id}).sort({recipename:1});
-    if(recipesName.length>0)
-    {
-        return res.render('index.ejs',{"recipes":recipesName});
-    }
-    else if(recipesType.length>0)
-    {
-        return res.render('index.ejs',{"recipes":recipesType});
-    }
-    else if(recipesOrigin.length>0)
-    {
-        return res.render('index.ejs',{"recipes":recipesOrigin});
-    }
 });
 
 
@@ -88,7 +66,6 @@ app.put('/update',upload.single('recipeimg'),async(req,res)=>{
   
     const recipe=await recipeModel.findOne({"_id":body.recipeid});
  
-    console.log(recipe,body)
     if(!recipe)
     {
         return res.json({"success":"false","message":"recipe not found"});
@@ -104,7 +81,6 @@ app.put('/update',upload.single('recipeimg'),async(req,res)=>{
     console.log(recipe);
     await recipe.save();
     return res.json({"success":"true","message":"recipe updated successfully"});
-    // res.render('deleterecipe.ejs',{recipes});
 });
 
 
@@ -141,5 +117,48 @@ app.post('/createrecipe',upload.single('recipeimg'),async(req,res)=>{
    }
    return res.json({"msg":"issue in saving recipe!"})
 });
+
+app.get('/deleterecipe/:id',async(req,res)=>{
+    const id=req.params.id;
+
+    const recipesName=await recipeModel.find({'recipename':id}).sort({recipename:1});
+    const recipesType=await recipeModel.find({'recipetype':id}).sort({recipename:1});
+    const recipesOrigin=await recipeModel.find({'recipeorigin':id}).sort({recipename:1});
+    
+    if(recipesName.length>0)
+    {
+        return res.render('deleterecipe.ejs',{"recipes":recipesName});
+    }
+    else if(recipesType.length>0)
+    {
+        return res.render('deleterecipe.ejs',{"recipes":recipesType});
+    }
+    else if(recipesOrigin.length>0)
+    {
+        return res.render('deleterecipe.ejs',{"recipes":recipesOrigin});
+    }
+});
+
+app.get('/:id',async(req,res)=>{
+    const id=req.params.id;
+
+    const recipesName=await recipeModel.find({'recipename':id}).sort({recipename:1});
+    const recipesType=await recipeModel.find({'recipetype':id}).sort({recipename:1});
+    const recipesOrigin=await recipeModel.find({'recipeorigin':id}).sort({recipename:1});
+
+    if(recipesName.length>0)
+    {
+        return res.render('index.ejs',{"recipes":recipesName});
+    }
+    else if(recipesType.length>0)
+    {
+        return res.render('index.ejs',{"recipes":recipesType});
+    }
+    else if(recipesOrigin.length>0)
+    {
+        return res.render('index.ejs',{"recipes":recipesOrigin});
+    }
+});
+
 
 app.listen('2001',()=>console.log('server started!'));
