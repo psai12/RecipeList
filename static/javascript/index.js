@@ -133,14 +133,22 @@ function Search()
 
 function Validation()
 {
-    const recipeName=document.querySelector('.recipeimage');
+    const recipeName=document.querySelector('.recipename');
     const recipeIngredient=document.querySelector('.ingredient');
     const recipeImage=document.querySelector('.recipeimage');
 
     if(recipeName && !recipeName.value)
     {
         recipeName.placeholder="Write Name";
-        return;
     }
 
+    if(recipeIngredient && !recipeIngredient.value)
+    {
+        recipeName.placeholder="Write Ingredient";
+    }
+    if(recipeImage && !recipeImage.value)
+    {
+        recipeName.placeholder="Insert Image";
+        return;
+    }
 }
