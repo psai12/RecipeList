@@ -135,7 +135,7 @@ function Validation()
 {
     const recipeName=document.querySelector('.recipename');
     const recipeIngredient=document.querySelector('.ingredient');
-    const recipeImage=document.querySelector('.recipeimage');
+    const message=document.querySelector('.message');
 
     if(recipeName && !recipeName.value)
     {
@@ -144,11 +144,11 @@ function Validation()
 
     if(recipeIngredient && !recipeIngredient.value)
     {
-        recipeName.placeholder="Write Ingredient";
+        recipeIngredient.placeholder="Write Ingredient";
     }
-    if(recipeImage && !recipeImage.value)
+    if(message)
     {
-        recipeName.placeholder="Insert Image";
+        message.innerText="Insert Image";
         return;
     }
 }

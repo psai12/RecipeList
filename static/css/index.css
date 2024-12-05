@@ -66,6 +66,10 @@
     width:450px;
     margin-top: 30px;
 }
+#addrecipe section input::placeholder,#editrecipe section input::placeholder
+{
+    color: red;
+}
 .submitrecipe
 {
     width: 250px;
@@ -109,4 +113,8 @@
     position: absolute;
     top: -30px;
     right: 5px;
+}
+.message
+{
+    color: red;
 }
