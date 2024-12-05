@@ -7,6 +7,8 @@ const multer=require('multer');
 const recipeModel=require('./model/recipemode.js');
 const mongoose=require('mongoose');
 
+mongoose.set('debug', true);
+
 mongoose.connect('mongodb://127.0.0.1:27017/',{dbName:'recipebook'}).then(e=>console.log('database connected')).catch(e=>{
     console.log('issue in connecting database!');
 })
@@ -59,6 +61,21 @@ app.get('/deleterecipe',async(req,res)=>{
     res.render('deleterecipe.ejs',{recipes});
 });
 
+app.get('/search/:id',async(req,res)=>{
+    const id=req.params.id;
+
+    const recipes=await recipeModel.find({
+        $or: [
+            { recipename: { $regex: id, $options: 'i' } },
+            { recipeingredient: { $regex: id, $options: 'i' } },
+            { recipetype: { $regex: id, $options: 'i' } },
+            { recipeingredient: { $regex: recipeorigin, $options: 'i' } },
+          ]
+    }).sort({recipe:1});
+    console.log(recipes);
+    res.render('index.ejs',{recipes});
+});
+
 app.put('/update',upload.single('recipeimg'),async(req,res)=>{
     const body=JSON.parse(JSON.stringify(req.body))
     const file=req.file;
@@ -70,7 +87,6 @@ app.put('/update',upload.single('recipeimg'),async(req,res)=>{
     {
         return res.json({"success":"false","message":"recipe not found"});
     }
-
 
     console.log(recipe);
     recipe.recipename=body.recipe,

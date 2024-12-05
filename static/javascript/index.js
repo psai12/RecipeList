@@ -99,3 +99,18 @@ async function EditRecipe()
         }
     }
 } 
+
+Search();
+function Search()
+{
+    const search=document.querySelector('.search');
+
+
+    if(search)
+    {
+        search.addEventListener('input',(e)=>{
+             window.location.href=`http://localhost:/2001/search/${e.target.value}`
+        })
+       
+    }
+}
