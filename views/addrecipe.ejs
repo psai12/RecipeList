@@ -5,11 +5,11 @@
   <form id="addrecipe">
      <section>
         <label>Recipe Name</label>
-        <input type="text" name="recipe">
+        <input type="text" name="recipe" class="recipename">
      </section>
      <section>
       <label>Recipe Type</label>
-         <select name="recipetype">
+         <select name="recipetype" >
             <option>Breakfast</option>
             <option>Snack</option>
             <option>Lunch</option>
@@ -26,12 +26,12 @@
       </select>
      </section>
      <section>
-      <label>Ingrediant</label>
-      <input type="text" name="ingredient">
+      <label >Ingrediant</label>
+      <input type="text" name="ingredient" class="ingredient">
    </section>
    <section>
       <label>Upload Recipe Image</label>
-      <input type="file" name="recipeimg" accept=".png,.jpg,.jpeg">
+      <input type="file" name="recipeimg" accept=".png,.jpg,.jpeg" class="recipeimage">
    </section>
    <button type="submit" class="submitrecipe">List Recipe</button>
   </form>

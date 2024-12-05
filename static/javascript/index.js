@@ -5,6 +5,7 @@ if(form)
 {
     form.onsubmit=async (e)=>{
         e.preventDefault();
+        Validation()
         const fields=new FormData(e.target);
         const data=Object.fromEntries(fields.entries());
         
@@ -128,4 +129,18 @@ function Search()
             })
            
         }
+}
+
+function Validation()
+{
+    const recipeName=document.querySelector('.recipeimage');
+    const recipeIngredient=document.querySelector('.ingredient');
+    const recipeImage=document.querySelector('.recipeimage');
+
+    if(recipeName && !recipeName.value)
+    {
+        recipeName.placeholder="Write Name";
+        return;
+    }
+
 }
