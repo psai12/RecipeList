@@ -3,8 +3,8 @@
 <main class="main">
    <input type="text" name="search" class="search" placeholder="search">
 
-  
    <div class="allrecipes">
+      <%if(recipes){%>
       <% for(let i of recipes) {%>
       <div class="recipe">
          <a href="/editrecipe"><img src="static/assets/edit.png" width="20" height="20" class="deleteicon"></a>
@@ -14,6 +14,7 @@
          <label><%=i.recipetype%></label>
          <label><%=i.recipeorigin%></label>
       </div>
+      <% }%>
       <% }%>
    </div>
  

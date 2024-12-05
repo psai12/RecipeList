@@ -108,8 +108,12 @@ function Search()
 
     if(search)
     {
-        search.addEventListener('input',(e)=>{
-             window.location.href=`http://localhost:/2001/search/${e.target.value}`
+        search.addEventListener('input',async (e)=>{
+            e.preventDefault();
+        //     const response = await fetch(`http://localhost:2001/${e.target.value}`);
+        //    const html = await response.text();
+        //    console.log(html);
+             window.location.href=`http://localhost:2001/${e.target.value}`
         })
        
     }

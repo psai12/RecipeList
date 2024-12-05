@@ -55,26 +55,32 @@ app.get('/',async (req,res)=>
    
 });
 
+app.get('/:id',async(req,res)=>{
+    const id=req.params.id;
+
+    const recipesName=await recipeModel.find({'recipename':id}).sort({recipename:1});
+    const recipesType=await recipeModel.find({'recipetype':id}).sort({recipename:1});
+    const recipesOrigin=await recipeModel.find({'recipeorigin':id}).sort({recipename:1});
+    if(recipesName.length>0)
+    {
+        return res.render('index.ejs',{"recipes":recipesName});
+    }
+    else if(recipesType.length>0)
+    {
+        return res.render('index.ejs',{"recipes":recipesType});
+    }
+    else if(recipesOrigin.length>0)
+    {
+        return res.render('index.ejs',{"recipes":recipesOrigin});
+    }
+});
+
 
 app.get('/deleterecipe',async(req,res)=>{
     const recipes=await recipeModel.find({});
     res.render('deleterecipe.ejs',{recipes});
 });
 
-app.get('/search/:id',async(req,res)=>{
-    const id=req.params.id;
-
-    const recipes=await recipeModel.find({
-        $or: [
-            { recipename: { $regex: id, $options: 'i' } },
-            { recipeingredient: { $regex: id, $options: 'i' } },
-            { recipetype: { $regex: id, $options: 'i' } },
-            { recipeingredient: { $regex: recipeorigin, $options: 'i' } },
-          ]
-    }).sort({recipe:1});
-    console.log(recipes);
-    res.render('index.ejs',{recipes});
-});
 
 app.put('/update',upload.single('recipeimg'),async(req,res)=>{
     const body=JSON.parse(JSON.stringify(req.body))
