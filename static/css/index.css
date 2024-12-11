@@ -109,7 +109,7 @@
     position: relative;
    
 }
-.deleteicon
+.deleteicon,.editicon
 {
     position: absolute;
     top: -30px;
